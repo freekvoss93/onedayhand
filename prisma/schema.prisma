@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String?
+  role          String?   // "HELPER" | "ENTREPRENEUR" | null (not onboarded yet)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  profileHelper       ProfileHelper?
+  profileEntrepreneur ProfileEntrepreneur?
+  listings            Listing[]
+  applications        Application[]
+  sentMessages        Message[]           @relation("SentMessages")
+  reviewsGiven        Review[]            @relation("ReviewsGiven")
+  reviewsReceived     Review[]            @relation("ReviewsReceived")
+}
+
+model ProfileHelper {
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  city                String
+  bio                 String?
+  availabilityDays    String   // JSON array: ["monday","tuesday","..."]
+  interests           String?  // comma-separated
+  maxTravelMinutes    Int      @default(60)
+  intensityPreference String   @default("medium") // "low" | "medium" | "high"
+  preferOutdoor       Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model ProfileEntrepreneur {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName String
+  tradeType   String   // "flooring" | "painting" | "plumbing" | "electrical" | "carpentry" | "general"
+  city        String
+  bio         String?
+  safetyInfo  String?
+  website     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Listing {
+  id                 String        @id @default(cuid())
+  entrepreneurId     String
+  entrepreneur       User          @relation(fields: [entrepreneurId], references: [id], onDelete: Cascade)
+  title              String
+  description        String
+  city               String
+  dayOptions         String        // JSON array: ["monday","wednesday"]
+  intensity          String        // "low" | "medium" | "high"
+  requirements       String?
+  compensationType   String        @default("none") // "none" | "expenses" | "daily_rate"
+  compensationAmount Float?
+  isActive           Boolean       @default(true)
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  applications       Application[]
+}
+
+model Application {
+  id           String   @id @default(cuid())
+  listingId    String
+  listing      Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  helperId     String
+  helper       User     @relation(fields: [helperId], references: [id], onDelete: Cascade)
+  message      String
+  preferredDay String
+  status       String   @default("pending") // "pending" | "accepted" | "rejected"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  match        Match?
+
+  @@unique([listingId, helperId])
+}
+
+model Match {
+  id            String      @id @default(cuid())
+  applicationId String      @unique
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  scheduledDate DateTime
+  status        String      @default("scheduled") // "scheduled" | "completed" | "cancelled"
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  messages      Message[]
+  reviews       Review[]
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  matchId   String
+  match     Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  senderId  String
+  sender    User     @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  matchId    String
+  match      Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  reviewerId String
+  reviewer   User     @relation("ReviewsGiven", fields: [reviewerId], references: [id], onDelete: Cascade)
+  revieweeId String
+  reviewee   User     @relation("ReviewsReceived", fields: [revieweeId], references: [id], onDelete: Cascade)
+  rating     Int      // 1-5
+  text       String?
+  createdAt  DateTime @default(now())
+
+  @@unique([matchId, reviewerId])
+}
