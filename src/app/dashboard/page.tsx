@@ -117,7 +117,7 @@ async function HelperDashboard({ userId, userName }: { userId: string; userName?
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="section-title">Aankomende matches</h2>
-            <Link href="/matches" className="text-sm text-blue-600 hover:underline">
+            <Link href="/matches" className="text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}>
               Alle matches →
             </Link>
           </div>
@@ -126,7 +126,7 @@ async function HelperDashboard({ userId, userName }: { userId: string; userName?
               <p className="text-gray-500 text-sm">Nog geen matches.</p>
               <Link
                 href="/listings"
-                className="mt-2 inline-block text-sm text-blue-600 hover:underline"
+                className="mt-2 inline-block text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}
               >
                 Browse hulpvragen →
               </Link>
@@ -159,7 +159,7 @@ async function HelperDashboard({ userId, userName }: { userId: string; userName?
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="section-title">Aanbevolen voor jou</h2>
-            <Link href="/listings" className="text-sm text-blue-600 hover:underline">
+            <Link href="/listings" className="text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}>
               Alle hulpvragen →
             </Link>
           </div>
@@ -192,7 +192,7 @@ async function HelperDashboard({ userId, userName }: { userId: string; userName?
                           .map((d) => (
                             <span
                               key={d}
-                              className="text-xs bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded"
+                              className="text-xs bg-brand-50 text-brand-600 px-1.5 py-0.5 rounded"
                             >
                               {getDayLabel(d)}
                             </span>
@@ -263,7 +263,7 @@ async function EntrepreneurDashboard({
         </div>
         <Link
           href="/listings/new"
-          className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+          className="px-4 py-2 bg-brand-500 text-white text-sm font-medium rounded-lg hover:bg-brand-600 transition-colors"
         >
           + Nieuwe hulpvraag
         </Link>
@@ -298,7 +298,7 @@ async function EntrepreneurDashboard({
           <div className="text-sm text-gray-500 mt-0.5">Nieuwe aanvragen</div>
         </div>
         <div className="card p-4">
-          <div className="text-2xl font-bold text-blue-600">{recentMatches.length}</div>
+          <div className="text-2xl font-bold text-brand-500">{recentMatches.length}</div>
           <div className="text-sm text-gray-500 mt-0.5">Matches</div>
         </div>
         <div className="card p-4">
@@ -314,7 +314,7 @@ async function EntrepreneurDashboard({
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="section-title">Mijn hulpvragen</h2>
-            <Link href="/listings/new" className="text-sm text-blue-600 hover:underline">
+            <Link href="/listings/new" className="text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}>
               + Nieuwe vraag
             </Link>
           </div>
@@ -323,7 +323,7 @@ async function EntrepreneurDashboard({
               <p className="text-gray-500 text-sm mb-3">Nog geen hulpvragen geplaatst.</p>
               <Link
                 href="/listings/new"
-                className="inline-block px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-block px-4 py-2 bg-brand-500 text-white text-sm font-medium rounded-lg hover:bg-brand-600 transition-colors"
               >
                 Eerste hulpvraag plaatsen
               </Link>
@@ -366,7 +366,7 @@ async function EntrepreneurDashboard({
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="section-title">Aankomende werkdagen</h2>
-            <Link href="/matches" className="text-sm text-blue-600 hover:underline">
+            <Link href="/matches" className="text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}>
               Alle matches →
             </Link>
           </div>

@@ -35,7 +35,7 @@ export function MessageForm({ matchId }: { matchId: string }) {
           placeholder="Stuur een bericht..."
           required
           maxLength={2000}
-          className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
         />
         <Button type="submit" loading={loading} size="sm">
           Verstuur

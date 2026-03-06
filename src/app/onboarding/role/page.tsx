@@ -19,70 +19,67 @@ export default function RolePage() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-2xl">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-900">Wie ben jij?</h1>
-          <p className="mt-3 text-gray-600">
-            Kies je rol om verder te gaan. Je kunt dit later niet meer wijzigen.
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#c4541a" }}>
+            Stap 1 van 2
+          </p>
+          <h1 className="text-3xl font-black uppercase tracking-wide text-gray-900">Wie ben jij?</h1>
+          <p className="mt-3 text-gray-600 text-sm">
+            Kies je rol om verder te gaan.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Helper card */}
           <button
             onClick={() => chooseRole("HELPER")}
             disabled={!!loading}
-            className="card p-8 text-left hover:border-blue-400 hover:shadow-md transition-all cursor-pointer disabled:opacity-60 group"
+            className="card p-8 text-left hover:shadow-md transition-all cursor-pointer disabled:opacity-60 group border-t-4"
+            style={{ borderTopColor: loading === "HELPER" ? "#c4541a" : "transparent" }}
+            onMouseEnter={e => (e.currentTarget.style.borderTopColor = "#c4541a")}
+            onMouseLeave={e => (e.currentTarget.style.borderTopColor = loading === "HELPER" ? "#c4541a" : "transparent")}
           >
             <div className="text-5xl mb-4">💼</div>
-            <h2 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+            <h2 className="text-base font-black uppercase tracking-wide text-gray-900 mb-3">
               Kantoorwerker
             </h2>
-            <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
               Jij werkt in een kantooromgeving en wil 1 dag per week je handen vuil maken.
-              Leer een vak, help iemand verder, en beleef wat anders.
             </p>
-            <ul className="mt-4 space-y-1.5 text-sm text-gray-500">
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Browse hulpvragen
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Stel je beschikbaarheid in
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Stuur aanvragen
-              </li>
+            <ul className="space-y-1.5 text-sm text-gray-500">
+              {["Browse hulpvragen", "Stel beschikbaarheid in", "Stuur aanvragen"].map(i => (
+                <li key={i} className="flex items-center gap-2">
+                  <span style={{ color: "#c4541a" }} className="font-bold">✓</span> {i}
+                </li>
+              ))}
             </ul>
             {loading === "HELPER" && (
-              <div className="mt-4 text-sm text-blue-600 font-medium">Laden...</div>
+              <div className="mt-4 text-xs font-bold uppercase tracking-widest" style={{ color: "#c4541a" }}>Laden...</div>
             )}
           </button>
 
-          {/* Entrepreneur card */}
           <button
             onClick={() => chooseRole("ENTREPRENEUR")}
             disabled={!!loading}
-            className="card p-8 text-left hover:border-orange-400 hover:shadow-md transition-all cursor-pointer disabled:opacity-60 group"
+            className="card p-8 text-left hover:shadow-md transition-all cursor-pointer disabled:opacity-60 group border-t-4"
+            style={{ borderTopColor: loading === "ENTREPRENEUR" ? "#c4541a" : "transparent" }}
+            onMouseEnter={e => (e.currentTarget.style.borderTopColor = "#c4541a")}
+            onMouseLeave={e => (e.currentTarget.style.borderTopColor = loading === "ENTREPRENEUR" ? "#c4541a" : "transparent")}
           >
             <div className="text-5xl mb-4">🔨</div>
-            <h2 className="text-xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
+            <h2 className="text-base font-black uppercase tracking-wide text-gray-900 mb-3">
               Praktische ondernemer
             </h2>
-            <p className="mt-2 text-gray-600 text-sm leading-relaxed">
-              Jij hebt een ambacht of klus­bedrijf en kunt goed een extra paar handen
-              gebruiken. Post je hulpvraag en vind een enthousiaste helper.
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              Jij hebt een ambacht of klusbedrijf en kunt een extra paar handen gebruiken.
             </p>
-            <ul className="mt-4 space-y-1.5 text-sm text-gray-500">
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Plaats hulpvragen
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Bekijk aanvragen
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Plan jouw dag samen
-              </li>
+            <ul className="space-y-1.5 text-sm text-gray-500">
+              {["Plaats hulpvragen", "Bekijk aanvragen", "Plan jouw dag samen"].map(i => (
+                <li key={i} className="flex items-center gap-2">
+                  <span style={{ color: "#c4541a" }} className="font-bold">✓</span> {i}
+                </li>
+              ))}
             </ul>
             {loading === "ENTREPRENEUR" && (
-              <div className="mt-4 text-sm text-orange-600 font-medium">Laden...</div>
+              <div className="mt-4 text-xs font-bold uppercase tracking-widest" style={{ color: "#c4541a" }}>Laden...</div>
             )}
           </button>
         </div>

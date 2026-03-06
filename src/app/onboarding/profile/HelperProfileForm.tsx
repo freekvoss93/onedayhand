@@ -71,7 +71,7 @@ export function HelperProfileForm({ defaultValues }: { defaultValues?: Record<st
               onClick={() => toggleDay(day.value)}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 selectedDays.includes(day.value)
-                  ? "bg-blue-600 text-white"
+                  ? "bg-brand-500 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -125,7 +125,7 @@ export function HelperProfileForm({ defaultValues }: { defaultValues?: Record<st
           name="preferOutdoor"
           value="true"
           defaultChecked={defaultValues?.preferOutdoor === "true"}
-          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          className="h-4 w-4 rounded border-gray-300 text-brand-500 focus:ring-brand-400"
         />
         <label htmlFor="preferOutdoor" className="text-sm text-gray-700">
           Ik werk liever buiten

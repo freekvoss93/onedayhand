@@ -27,7 +27,6 @@ export default function RegisterPage() {
       return;
     }
 
-    // Auto sign in after register
     const signInResult = await signIn("credentials", {
       email: formData.get("email"),
       password: formData.get("password"),
@@ -46,11 +45,15 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-3xl">🤝</Link>
-          <h1 className="mt-4 text-2xl font-bold text-gray-900">Maak een account aan</h1>
+          <Link href="/" className="inline-block">
+            <span className="font-black text-2xl uppercase tracking-widest" style={{ color: "#c4541a" }}>
+              OneDayHand
+            </span>
+          </Link>
+          <h1 className="mt-4 text-xl font-black uppercase tracking-wide text-gray-900">Account aanmaken</h1>
           <p className="mt-2 text-sm text-gray-600">
             Al een account?{" "}
-            <Link href="/auth/login" className="text-blue-600 hover:underline font-medium">
+            <Link href="/auth/login" className="font-bold hover:underline" style={{ color: "#c4541a" }}>
               Inloggen
             </Link>
           </p>
@@ -58,34 +61,12 @@ export default function RegisterPage() {
 
         <div className="card p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              label="Volledige naam"
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Jan de Vries"
-              required
-              autoComplete="name"
-            />
-            <Input
-              label="E-mailadres"
-              id="email"
-              name="email"
-              type="email"
-              placeholder="jan@voorbeeld.nl"
-              required
-              autoComplete="email"
-            />
-            <Input
-              label="Wachtwoord"
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Minimaal 8 tekens"
-              required
-              autoComplete="new-password"
-              minLength={8}
-            />
+            <Input label="Volledige naam" id="name" name="name" type="text"
+              placeholder="Jan de Vries" required autoComplete="name" />
+            <Input label="E-mailadres" id="email" name="email" type="email"
+              placeholder="jan@voorbeeld.nl" required autoComplete="email" />
+            <Input label="Wachtwoord" id="password" name="password" type="password"
+              placeholder="Minimaal 8 tekens" required autoComplete="new-password" minLength={8} />
 
             {error && (
               <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">

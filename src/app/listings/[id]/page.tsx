@@ -43,7 +43,7 @@ export default async function ListingDetailPage({ params }: { params: { id: stri
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="mb-4">
-        <Link href="/listings" className="text-sm text-blue-600 hover:underline">
+        <Link href="/listings" className="text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}>
           ← Terug naar hulpvragen
         </Link>
       </div>
@@ -135,7 +135,7 @@ export default async function ListingDetailPage({ params }: { params: { id: stri
               <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Beschikbare dagen</p>
               <div className="flex flex-wrap gap-1.5">
                 {days.map((d) => (
-                  <span key={d} className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-medium">
+                  <span key={d} className="px-2 py-1 bg-brand-50 text-brand-600 rounded text-xs font-medium">
                     {getDayLabel(d)}
                   </span>
                 ))}
@@ -201,7 +201,7 @@ export default async function ListingDetailPage({ params }: { params: { id: stri
               <p className="text-sm text-gray-600 mb-3">Log in om te reageren</p>
               <Link
                 href="/auth/login"
-                className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center justify-center w-full px-4 py-2 bg-brand-500 text-white text-sm font-medium rounded-lg hover:bg-brand-600 transition-colors"
               >
                 Inloggen
               </Link>

@@ -102,7 +102,7 @@ export default async function ProfilePage() {
           <div className="card p-6 text-center">
             <p className="text-gray-500 text-sm">
               Profiel nog niet aangemaakt.{" "}
-              <a href="/onboarding/profile" className="text-blue-600 hover:underline">
+              <a href="/onboarding/profile" className="font-bold hover:underline" style={{ color: "#c4541a" }}>
                 Aanmaken →
               </a>
             </p>

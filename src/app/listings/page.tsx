@@ -105,7 +105,7 @@ export default async function ListingsPage({
         {session?.user?.role === "ENTREPRENEUR" && (
           <Link
             href="/listings/new"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-brand-500 text-white text-sm font-medium rounded-lg hover:bg-brand-600 transition-colors"
           >
             + Nieuwe hulpvraag
           </Link>
@@ -119,12 +119,12 @@ export default async function ListingsPage({
           type="text"
           placeholder="Stad..."
           defaultValue={searchParams.city}
-          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
         />
         <select
           name="day"
           defaultValue={searchParams.day}
-          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-white"
         >
           <option value="">Alle dagen</option>
           <option value="monday">Maandag</option>
@@ -137,7 +137,7 @@ export default async function ListingsPage({
         <select
           name="intensity"
           defaultValue={searchParams.intensity}
-          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-white"
         >
           <option value="">Alle intensiteiten</option>
           <option value="low">Licht</option>
@@ -147,7 +147,7 @@ export default async function ListingsPage({
         <select
           name="trade"
           defaultValue={searchParams.trade}
-          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-white"
         >
           <option value="">Alle vakgebieden</option>
           {TRADE_TYPES.map((t) => (
@@ -158,7 +158,7 @@ export default async function ListingsPage({
         </select>
         <button
           type="submit"
-          className="px-4 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+          className="px-4 py-1.5 bg-brand-500 text-white text-sm font-medium rounded-lg hover:bg-brand-600 transition-colors"
         >
           Filteren
         </button>
@@ -193,7 +193,7 @@ export default async function ListingsPage({
                   </p>
                 </div>
                 {helperProfile && listing.score > 0 && (
-                  <span className="flex-shrink-0 text-xs font-medium bg-blue-50 text-blue-700 px-2 py-1 rounded-full">
+                  <span className="flex-shrink-0 text-xs font-medium bg-brand-50 text-brand-600 px-2 py-1 rounded-full">
                     {listing.score}% match
                   </span>
                 )}

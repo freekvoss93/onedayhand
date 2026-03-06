@@ -82,7 +82,7 @@ export function NewListingForm() {
               onClick={() => toggleDay(day.value)}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 selectedDays.includes(day.value)
-                  ? "bg-blue-600 text-white"
+                  ? "bg-brand-500 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >

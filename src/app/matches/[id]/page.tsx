@@ -61,7 +61,7 @@ export default async function MatchDetailPage({ params }: { params: { id: string
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="mb-4">
-        <Link href="/matches" className="text-sm text-blue-600 hover:underline">
+        <Link href="/matches" className="text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}>
           ← Terug naar matches
         </Link>
       </div>
@@ -97,7 +97,7 @@ export default async function MatchDetailPage({ params }: { params: { id: string
             <p className="text-xs text-gray-500 uppercase tracking-wide">Link</p>
             <Link
               href={`/listings/${match.application.listingId}`}
-              className="text-sm text-blue-600 hover:underline mt-1 block"
+              className="text-sm font-semibold hover:underline mt-1 block" style={{ color: "#c4541a" }}
             >
               Bekijk hulpvraag →
             </Link>
@@ -127,7 +127,7 @@ export default async function MatchDetailPage({ params }: { params: { id: string
                       <div
                         className={`max-w-xs sm:max-w-sm rounded-2xl px-4 py-2.5 ${
                           isMine
-                            ? "bg-blue-600 text-white rounded-br-sm"
+                            ? "bg-brand-500 text-white rounded-br-sm"
                             : "bg-gray-100 text-gray-900 rounded-bl-sm"
                         }`}
                       >
@@ -139,7 +139,7 @@ export default async function MatchDetailPage({ params }: { params: { id: string
                         <p className="text-sm">{msg.content}</p>
                         <p
                           className={`text-xs mt-1 ${
-                            isMine ? "text-blue-200" : "text-gray-400"
+                            isMine ? "text-brand-200" : "text-gray-400"
                           }`}
                         >
                           {formatTime(msg.createdAt)}
@@ -208,12 +208,12 @@ export default async function MatchDetailPage({ params }: { params: { id: string
           )}
 
           {!isPast && (
-            <div className="card p-5 bg-blue-50 border-blue-200">
-              <p className="text-sm text-blue-800 font-medium">
+            <div className="card p-5 bg-brand-50 border-brand-200">
+              <p className="text-sm text-brand-700 font-medium">
                 Werkdag gepland op{" "}
                 <strong>{formatDateShort(match.scheduledDate)}</strong>
               </p>
-              <p className="text-xs text-blue-600 mt-1">
+              <p className="text-xs text-brand-500 mt-1">
                 Na afloop kun je een review achterlaten.
               </p>
             </div>

@@ -37,11 +37,15 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-3xl">🤝</Link>
-          <h1 className="mt-4 text-2xl font-bold text-gray-900">Inloggen</h1>
+          <Link href="/" className="inline-block">
+            <span className="font-black text-2xl uppercase tracking-widest" style={{ color: "#c4541a" }}>
+              OneDayHand
+            </span>
+          </Link>
+          <h1 className="mt-4 text-xl font-black uppercase tracking-wide text-gray-900">Inloggen</h1>
           <p className="mt-2 text-sm text-gray-600">
             Nog geen account?{" "}
-            <Link href="/auth/register" className="text-blue-600 hover:underline font-medium">
+            <Link href="/auth/register" className="font-bold hover:underline" style={{ color: "#c4541a" }}>
               Aanmelden
             </Link>
           </p>
@@ -49,24 +53,10 @@ export default function LoginPage() {
 
         <div className="card p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              label="E-mailadres"
-              id="email"
-              name="email"
-              type="email"
-              placeholder="jan@voorbeeld.nl"
-              required
-              autoComplete="email"
-            />
-            <Input
-              label="Wachtwoord"
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Jouw wachtwoord"
-              required
-              autoComplete="current-password"
-            />
+            <Input label="E-mailadres" id="email" name="email" type="email"
+              placeholder="jan@voorbeeld.nl" required autoComplete="email" />
+            <Input label="Wachtwoord" id="password" name="password" type="password"
+              placeholder="Jouw wachtwoord" required autoComplete="current-password" />
 
             {error && (
               <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
@@ -80,12 +70,12 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 pt-6 border-t border-gray-100">
-            <p className="text-xs text-gray-500 text-center">
-              Test accounts (wachtwoord: <code className="bg-gray-100 px-1 rounded">password123</code>):
+            <p className="text-xs text-gray-500 text-center mb-2 font-bold uppercase tracking-wider">
+              Test accounts
             </p>
-            <div className="mt-2 space-y-1 text-xs text-gray-500 text-center">
-              <p>helper@test.nl (kantoorwerker)</p>
-              <p>ondernemer@test.nl (ondernemer)</p>
+            <div className="space-y-1 text-xs text-gray-500 text-center">
+              <p>helper@test.nl · ondernemer@test.nl</p>
+              <p>Wachtwoord: <code className="bg-gray-100 px-1 rounded font-mono">password123</code></p>
             </div>
           </div>
         </div>

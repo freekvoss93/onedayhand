@@ -7,15 +7,10 @@ import { authOptions } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "OneDayHand – Verbindt kantoor met klus",
-  description:
-    "Match als kantoorwerker met een praktische ondernemer voor 1 dag per week meehelpen.",
+  description: "Match als kantoorwerker met een praktische ondernemer voor 1 dag per week meehelpen.",
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
 
   return (
@@ -24,9 +19,15 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <Navbar />
           <main className="min-h-screen">{children}</main>
-          <footer className="border-t border-gray-200 bg-white mt-16">
-            <div className="max-w-6xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
-              © {new Date().getFullYear()} OneDayHand · Verbindt kantoor met klus
+          <footer style={{ backgroundColor: "#1a1208" }} className="mt-16">
+            <div className="max-w-6xl mx-auto px-4 py-10 text-center">
+              <p className="text-white font-black text-sm uppercase tracking-widest">OneDayHand</p>
+              <p className="text-xs uppercase tracking-widest mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>
+                Verbindt kantoor met klus
+              </p>
+              <p className="text-xs mt-4" style={{ color: "rgba(255,255,255,0.25)" }}>
+                © {new Date().getFullYear()} OneDayHand
+              </p>
             </div>
           </footer>
         </SessionProvider>

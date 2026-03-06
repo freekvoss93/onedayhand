@@ -81,7 +81,7 @@ export default async function MatchesPage() {
             <div className="text-3xl mb-3">🤝</div>
             <p className="text-gray-600">Nog geen matches.</p>
             {isHelper && (
-              <Link href="/listings" className="mt-3 inline-block text-sm text-blue-600 hover:underline">
+              <Link href="/listings" className="mt-3 inline-block text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}>
                 Browse hulpvragen →
               </Link>
             )}
@@ -119,7 +119,7 @@ export default async function MatchesPage() {
                   {match._count.reviews < 2 && match.status === "scheduled" && (
                     <div className="text-xs text-orange-500 mt-0.5">Review verwacht</div>
                   )}
-                  <div className="text-blue-600 text-sm mt-1">→</div>
+                  <div className="text-brand-500 text-sm mt-1">→</div>
                 </div>
               </Link>
             ))}

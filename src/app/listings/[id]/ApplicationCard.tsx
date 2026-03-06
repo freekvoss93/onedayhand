@@ -65,7 +65,7 @@ export function ApplicationCard({ application, days: _days }: ApplicationCardPro
               value={scheduledDate}
               onChange={(e) => setScheduledDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
-              className="block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
             />
           </div>
 
@@ -99,7 +99,7 @@ export function ApplicationCard({ application, days: _days }: ApplicationCardPro
         <div className="mt-3 pt-3 border-t border-gray-100">
           <Link
             href={`/matches/${application.match.id}`}
-            className="text-sm text-blue-600 hover:underline"
+            className="text-sm font-semibold hover:underline" style={{ color: "#c4541a" }}
           >
             Bekijk match & berichten →
           </Link>
