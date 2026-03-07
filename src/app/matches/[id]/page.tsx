@@ -8,12 +8,13 @@ import { MessageForm } from "./MessageForm";
 import { ReviewForm } from "./ReviewForm";
 import Link from "next/link";
 
-export default async function MatchDetailPage({ params }: { params: { id: string } }) {
+export default async function MatchDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect("/auth/login");
 
   const match = await prisma.match.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       application: {
         include: {

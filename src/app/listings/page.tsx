@@ -16,17 +16,18 @@ interface SearchParams {
 export default async function ListingsPage({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }) {
+  const sp = await searchParams;
   const session = await getServerSession(authOptions);
 
   const listings = await prisma.listing.findMany({
     where: {
       isActive: true,
-      ...(searchParams.city
-        ? { city: { contains: searchParams.city } }
+      ...(sp.city
+        ? { city: { contains: sp.city } }
         : {}),
-      ...(searchParams.intensity ? { intensity: searchParams.intensity } : {}),
+      ...(sp.intensity ? { intensity: sp.intensity } : {}),
     },
     include: {
       entrepreneur: {
@@ -39,15 +40,15 @@ export default async function ListingsPage({
 
   // Filter by day if specified
   let filtered = listings.filter((l) => {
-    if (!searchParams.day) return true;
+    if (!sp.day) return true;
     const days = parseDays(l.dayOptions);
-    return days.includes(searchParams.day);
+    return days.includes(sp.day);
   });
 
   // Filter by trade type
-  if (searchParams.trade) {
+  if (sp.trade) {
     filtered = filtered.filter(
-      (l) => l.entrepreneur.profileEntrepreneur?.tradeType === searchParams.trade
+      (l) => l.entrepreneur.profileEntrepreneur?.tradeType === sp.trade
     );
   }
 
@@ -118,12 +119,12 @@ export default async function ListingsPage({
           name="city"
           type="text"
           placeholder="Stad..."
-          defaultValue={searchParams.city}
+          defaultValue={sp.city}
           className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
         />
         <select
           name="day"
-          defaultValue={searchParams.day}
+          defaultValue={sp.day}
           className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-white"
         >
           <option value="">Alle dagen</option>
@@ -136,7 +137,7 @@ export default async function ListingsPage({
         </select>
         <select
           name="intensity"
-          defaultValue={searchParams.intensity}
+          defaultValue={sp.intensity}
           className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-white"
         >
           <option value="">Alle intensiteiten</option>
@@ -146,7 +147,7 @@ export default async function ListingsPage({
         </select>
         <select
           name="trade"
-          defaultValue={searchParams.trade}
+          defaultValue={sp.trade}
           className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-white"
         >
           <option value="">Alle vakgebieden</option>
@@ -162,7 +163,7 @@ export default async function ListingsPage({
         >
           Filteren
         </button>
-        {(searchParams.city || searchParams.day || searchParams.intensity || searchParams.trade) && (
+        {(sp.city || sp.day || sp.intensity || sp.trade) && (
           <a
             href="/listings"
             className="px-4 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"

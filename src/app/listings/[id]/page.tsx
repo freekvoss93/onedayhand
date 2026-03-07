@@ -9,11 +9,12 @@ import { ApplyForm } from "./ApplyForm";
 import { ApplicationCard } from "./ApplicationCard";
 import Link from "next/link";
 
-export default async function ListingDetailPage({ params }: { params: { id: string } }) {
+export default async function ListingDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const session = await getServerSession(authOptions);
 
   const listing = await prisma.listing.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       entrepreneur: {
         include: { profileEntrepreneur: true },
