@@ -8,6 +8,15 @@ import { authOptions } from "@/lib/auth";
 export const metadata: Metadata = {
   title: "OneDayHand – Verbindt kantoor met klus",
   description: "Match als kantoorwerker met een praktische ondernemer voor 1 dag per week meehelpen.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "OneDayHand",
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
